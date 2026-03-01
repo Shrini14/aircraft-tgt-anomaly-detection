@@ -205,7 +205,6 @@ def generate_llm_summary(flagged_engines):
 
     Do NOT include any text outside JSON.
 
-    In engineering summary only include about anomalies and why that anomalies and what can be step taken.
 
     response = model.generate_content(prompt)
 
