@@ -204,6 +204,8 @@ Return ONLY valid JSON in the following format:
 }}
 
 Do NOT include any text outside JSON.
+
+In enginnering summary only add which are all the anomaly engines and why and what steps can be done.
 """
 
     response = model.generate_content(prompt)
