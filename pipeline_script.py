@@ -203,23 +203,13 @@ def generate_llm_summary(flagged_engines):
       "recommended_action": "Recommended inspection or follow-up action"
     }}
 
-    IMPORTANT:
-    - Do NOT wrap JSON in markdown.
-    - Do NOT include ```json.
-    - Return raw JSON only.
+    Do NOT include any text outside JSON.
     """
 
     response = model.generate_content(prompt)
 
-    raw_text = response.text.strip()
-
-    # Remove markdown fences if model adds them
-    if raw_text.startswith("```"):
-        raw_text = raw_text.split("```")[1]
-        raw_text = raw_text.replace("json", "").strip()
-
     try:
-        structured_output = json.loads(raw_text)
+        structured_output = json.loads(response.text)
         logger.info("Structured LLM summary generated successfully.")
         return structured_output
 
@@ -228,7 +218,7 @@ def generate_llm_summary(flagged_engines):
         return {
             "critical_engines": [],
             "risk_assessment": "Unknown",
-            "engineering_summary": raw_text,
+            "engineering_summary": response.text,
             "recommended_action": "Manual review required."
         }
 # =========================
