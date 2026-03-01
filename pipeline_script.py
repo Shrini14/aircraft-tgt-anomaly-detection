@@ -28,9 +28,11 @@ if not logger.handlers:
 # =========================
 # Configuration
 # =========================
-MODEL_PATH = r"D:\Amygda_project\model\tgt_regression_pipeline.joblib"
-DATA_PATH = r"D:\Amygda_project\CleanedData\cleaned_aircraft_sensor_data.csv"
-DB_PATH = r"D:\Amygda_project\Database\engine_data.db"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "tgt_regression_pipeline.joblib")
+DATA_PATH = os.path.join(BASE_DIR, "CleanedData", "cleaned_aircraft_sensor_data.csv")
+DB_PATH = os.path.join(BASE_DIR, "Database", "engine_data.db")
+
 
 FEATURE_LIST = [
     "EPR","AFT","OIP","OIT","P160","P50","P3",
