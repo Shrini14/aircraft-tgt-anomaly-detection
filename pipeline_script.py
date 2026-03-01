@@ -184,7 +184,8 @@ def generate_llm_summary(flagged_engines):
         logger.error("GEMINI_API_KEY environment variable not set.")
         raise ValueError("Missing Gemini API Key.")
 
-    client = genai.Client(api_key=api_key)
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel("gemini-1.5-flash")
 
     prompt = f"""
     You are an aircraft engine performance diagnostics assistant.
@@ -205,10 +206,7 @@ def generate_llm_summary(flagged_engines):
     Do NOT include any text outside JSON.
     """
 
-    response = client.models.generate_content(
-        model="gemini-3-flash-preview",
-        contents=prompt
-    )
+    response = model.generate_content(prompt)
 
     try:
         structured_output = json.loads(response.text)
