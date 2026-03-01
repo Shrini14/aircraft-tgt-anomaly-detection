@@ -136,19 +136,6 @@ This solution is formalized into a deployable pipeline:
 
 Designed for reproducibility and future production integration.
 
----
-
-## 📁 Repository Structure
-  Aircraft-TGT-Anomaly-Detection/
-  │
-  ├── data/
-  ├── models/
-  ├── notebook/
-  ├── app.py
-  ├── pipeline_script.py
-  ├── requirements.txt
-  └── README.md
-
 
 ---
 
@@ -163,7 +150,6 @@ Designed for reproducibility and future production integration.
 ## 🚀 Future Improvements
 
 - Time-series drift detection (CUSUM / Bayesian change detection)
-- Physics-informed modeling
 - Integration with maintenance logs
 - Real-time alerting system
 
