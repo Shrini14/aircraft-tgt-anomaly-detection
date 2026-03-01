@@ -211,7 +211,15 @@ In enginnering summary only add which are all the anomaly engines and why and wh
     response = model.generate_content(prompt)
 
     try:
-        structured_output = json.loads(response.text)
+        raw_text = response.text.strip()
+
+        # Remove markdown code block if Gemini adds it
+        if raw_text.startswith("```"):
+            raw_text = raw_text.replace("```json", "")
+            raw_text = raw_text.replace("```", "")
+            raw_text = raw_text.strip()
+        
+        structured_output = json.loads(raw_text)
         logger.info("Structured LLM summary generated successfully.")
         return structured_output
 
