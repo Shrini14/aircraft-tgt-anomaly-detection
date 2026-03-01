@@ -188,23 +188,23 @@ def generate_llm_summary(flagged_engines):
     model = genai.GenerativeModel("gemini-2.5-flash")
 
     prompt = f"""
-    You are an aircraft engine performance diagnostics assistant.
+You are an aircraft engine performance diagnostics assistant.
 
-    Based on the following engine anomaly statistics:
+Based on the following engine anomaly statistics:
 
-    {flagged_engines.to_string(index=False)}
+{flagged_engines.to_string(index=False)}
 
-    Return ONLY valid JSON in the following format:
+Return ONLY valid JSON in the following format:
 
-    {{
-      "critical_engines": [list of engine numbers ranked by severity],
-      "risk_assessment": "Low / Moderate / High",
-      "engineering_summary": "Concise explanation of anomaly behavior",
-      "recommended_action": "Recommended inspection or follow-up action"
-    }}
+{{
+  "critical_engines": [list of engine numbers ranked by severity],
+  "risk_assessment": "Low / Moderate / High",
+  "engineering_summary": "Concise explanation of anomaly behavior",
+  "recommended_action": "Recommended inspection or follow-up action"
+}}
 
-    Do NOT include any text outside JSON.
-
+Do NOT include any text outside JSON.
+"""
 
     response = model.generate_content(prompt)
 
