@@ -58,13 +58,11 @@ def load_data():
     logger.info("Loading cleaned dataset...")
 
     df = pd.read_csv(DATA_PATH)
-    
 
-    # Save to SQLite (simulating production DB ingestion)
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+
     conn = sqlite3.connect(DB_PATH)
     df.to_sql("engine_data", conn, if_exists="replace", index=False)
-
-    logger.info("Data saved to SQLite database.")
 
     df_db = pd.read_sql("SELECT * FROM engine_data", conn)
     conn.close()
