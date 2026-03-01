@@ -6,7 +6,7 @@ import sqlite3
 import os
 import sys
 from datetime import datetime
-from google import genai
+import google.generativeai as genai
 import json
 from dotenv import load_dotenv
 load_dotenv()
