@@ -158,5 +158,4 @@ Designed for reproducibility and future production integration.
 ## 👤 Author
 
 R. Shrinivass  
-Data Scientist
 Regression-Based Anomaly Detection & Predictive Maintenance Systems
