@@ -735,7 +735,11 @@ if st.session_state.pipeline_ran:
         """, unsafe_allow_html=True)
 
         with st.spinner("🧠  AI is analysing flagged engines and generating engineering assessment..."):
-            summary = pipeline.generate_llm_summary(flagged)
+            @st.cache_data(show_spinner=False)
+            def cached_llm_summary(flagged_df):
+                return pipeline.generate_llm_summary(flagged_df)
+
+            summary = cached_llm_summary(flagged)
 
         col_a, col_b = st.columns(2)
 
