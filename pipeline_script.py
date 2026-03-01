@@ -185,7 +185,7 @@ def generate_llm_summary(flagged_engines):
         raise ValueError("Missing Gemini API Key.")
 
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel("gemini-3-flash-preview")
+    model = genai.GenerativeModel("gemini-1.0-pro")
 
     prompt = f"""
     You are an aircraft engine performance diagnostics assistant.
