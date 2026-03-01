@@ -6,7 +6,6 @@ import sqlite3
 import os
 import sys
 from datetime import datetime
-from openai import OpenAI
 from google import genai
 import json
 from dotenv import load_dotenv
